@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import time
 from selenium.webdriver.common.keys import Keys
 import requests
+import random
 #local from selenium.webdriver.chrome.service import Service
 # service = Service("absolute path of chromediver.exe")
 def get_driver():
@@ -26,22 +27,30 @@ def get_data():
     sys.stdout.reconfigure(encoding='utf-8')
 
     td_elements = soup.find_all('td', class_="myresponse askia-response")
-
+    random_checkbox = ''
     if td_elements:
         for td_element in td_elements:
-
+            input_checkbox = td_element.find_all('input', type='checkbox')
             print(td_element.get_text())
+            if input_checkbox:
+                random_idx = random.randint(0, len(input_checkbox)-1)
+                random_checkbox = input_checkbox[random_idx]
+                
+            #     for input_check in input_checkbox:
+            #         print(input_check.get('name'))
     else:
         print("Element not found")
 
- 
+    print(f"Selected checkbox: {random_checkbox.get('id')}")
 
 
-# def main():
-#     driver = get_driver()
+def main():
+    driver = get_driver()
    
 
-#     print(driver.current_url)
+    print(driver.current_url)
 
 # print(main())
+
+
 print(get_data())
