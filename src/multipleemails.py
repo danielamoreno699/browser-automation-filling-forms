@@ -25,7 +25,7 @@ print(df)
 for index,row in df.iterrows():
    
     contents = f"""  
-    hi {row['name']},, este un email generado por python script. no reponder.
+    hi {row['name']}, este un email generado por python script. no reponder.
     """
 
     yag.send(to=row['email'], subject=subject, contents=contents)
