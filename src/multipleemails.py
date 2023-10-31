@@ -15,12 +15,10 @@ contents = """
 Hello, this is a test email sent from Python using yagmail.
 """
 
-while True:
-
-    yag = yagmail.SMTP(user=sender, password=SECRET_KEY)
-    yag.send(
-    to=receiver,
-    subject=subject,
-    contents=contents)
-    print("Email sent successfully")
-    time.sleep(10)
+yag = yagmail.SMTP(user=sender, password=SECRET_KEY)
+yag.send(
+to=receiver,
+subject=subject,
+contents=contents)
+print("Email sent successfully")
+    
